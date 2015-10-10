@@ -95,7 +95,7 @@ myManageHook = composeAll
 myLogHook h = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn h }
  
 myDzenStatus = "dzen2 -w '320' -ta 'l'" ++ myDzenStyle
-myDzenConky  = "conky -c ~/.xmonad/conkyrc | dzen2 -x '320' -w '704' -ta 'r'" ++ myDzenStyle
+myDzenConky  = "conky -c ~/.xmonad/conkyrc | dzen2 -x '320' -w '1120' -ta 'r'" ++ myDzenStyle
 myDzenStyle  = " -h '20' -fg '#777777' -bg '#222222' -fn 'arial:bold:size=11'"
  
 myDzenPP  = dzenPP
