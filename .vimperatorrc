@@ -1,0 +1,4 @@
+noremap j 10j
+noremap J 30j
+noremap k 10k
+noremap K 30k
