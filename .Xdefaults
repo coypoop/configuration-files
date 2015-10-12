@@ -26,7 +26,12 @@ URxvt*tintColor:     #ffffff
 URxvt*shading:        0
 URxvt*inheritPixmap:     False
 
-
+! URL grabber stuff ----------------------------------------------------------
+URxvt.perl-lib:            ~/.urxvt/ext/
+URxvt.perl-ext-common:     default,url-select
+URxvt.keysym.M-u:          perl:url-select:select_next
+URxvt.url-select.launcher: iceweasel
+URxvt.underlineURLs:       true!
 ! xscreensaver ---------------------------------------------------------------
 
 !font settings
