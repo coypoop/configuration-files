@@ -1,12 +1,10 @@
 URxvt.font:\
-    -*-terminus-medium-r-normal-*-16-*-*-*-*-*-iso10646-1,\
     -*-unifont-medium-r-normal-*-16-*-*-*-*-*-iso10646-1,\
-    xft:Lohit Kannada:antialias=false
+    -*-terminus-medium-r-normal-*-16-*-*-*-*-*-iso10646-1
 
 URxvt.boldFont:\
-    -*-terminus-bold-r-normal-*-16-*-*-*-*-*-iso10646-1,\
     -*-unifont-medium-r-normal-*-16-*-*-*-*-*-iso10646-1,\
-    xft:Lohit Kannada:antialias=false
+    -*-terminus-bold-r-normal-*-16-*-*-*-*-*-iso10646-1
 
 !urxvt*termName:         rxvt
 urxvt*background:       #0c0d0e

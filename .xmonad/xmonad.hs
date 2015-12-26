@@ -35,7 +35,9 @@ main = do
         conky  <- spawnPipe myDzenConky     -- conky stats on the right
         spawn "xset -b"
         spawn "xscreensaver -no-splash"
-        spawn "xrandr --output VGA-0 --mode 1440x900 --pos 0x0 --rotate normal --output LVDS --off"
+        spawn "xrandr --auto"
+        spawn "redshift"
+        spawn "xmodmap -e \"keycode 135 = Super_L\""
         xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig 
             { modMask            = mod4Mask
             , terminal           = "urxvtcd"
@@ -54,9 +56,11 @@ main = do
 myKeys = [ ((mod4Mask .|. shiftMask,  xK_l ), spawn "xscreensaver-command -lock")
          , ((0, xK_Print                   ), spawn "scrot")
          , ((mod4Mask              , xK_F1 ), spawn "iceweasel")
-         , ((mod4Mask              , xK_F10), spawn "amixer -q -D pulse set Master toggle")
-         , ((mod4Mask              , xK_F11), spawn "amixer -q -D pulse set Master 5%-")
-         , ((mod4Mask              , xK_F12), spawn "amixer -q -D pulse set Master 5%+ unmute")
+         , ((mod4Mask              , xK_F2 ), spawn "google-chrome")
+         , ((mod4Mask              , xK_F5 ), spawn "xrandr --output LVDS --mode 1280x768 --pos 0x0 --rotate normal --output CRT1 --mode 1440x900 --pos 1280x0 --rotate normal")
+         , ((mod4Mask              , xK_F10), spawn "amixer set Master toggle")
+         , ((mod4Mask .|. shiftMask, xK_a  ), spawn "amixer set Master 5%-")
+         , ((mod4Mask .|. shiftMask, xK_s  ), spawn "amixer set Master 5%+ unmute")
          ] 
  
 -- Tags/Workspaces
@@ -95,7 +99,7 @@ myManageHook = composeAll
 myLogHook h = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn h }
  
 myDzenStatus = "dzen2 -w '320' -ta 'l'" ++ myDzenStyle
-myDzenConky  = "conky -c ~/.xmonad/conkyrc | dzen2 -x '320' -w '1120' -ta 'r'" ++ myDzenStyle
+myDzenConky  = "conky -c ~/.xmonad/conkyrc | dzen2 -x '320' -w '2500' -ta 'r'" ++ myDzenStyle
 myDzenStyle  = " -h '20' -fg '#777777' -bg '#222222' -fn 'arial:bold:size=11'"
  
 myDzenPP  = dzenPP

@@ -1,6 +1,5 @@
 set t_Co=256
 let g:zenburn_high_Contrast=1
-colorscheme	default
 set nocompatible
 set bs=2
 set viminfo='100,<5000,s100,f1,/100,:100
@@ -29,18 +28,13 @@ set expandtab
 set nohlsearch
 
 set ttymouse=xterm2
-"set mouse=a
+set mouse=a
 
 set guioptions=aieg
 set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 
-let g:haddock_browser="/usr/bin/iceweasel"
-"let g:haskell_multiline_strings = 1
-
-execute pathogen#infect()
 syntax on
 filetype plugin indent on
-Helptags
 
 "set grepprg=grep\ -nH\ $*
 
