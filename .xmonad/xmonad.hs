@@ -19,7 +19,7 @@ import XMonad.Actions.CycleWindows -- classic alt-tab
 import XMonad.Actions.CycleWS      -- cycle thru WS', toggle last WS
 import XMonad.Actions.DwmPromote   -- swap master like dwm
 import XMonad.Hooks.DynamicLog     -- statusbar 
-import XMonad.Hooks.EwmhDesktops   -- fullscreenEventHook fixes chrome fullscreen
+import XMonad.Hooks.EwmhDesktops   -- fullscreenEventHook fixes chrome fullscreen, libreoffice
 import XMonad.Hooks.ManageDocks    -- dock/tray mgmt
 import XMonad.Hooks.UrgencyHook    -- window alert bells 
 import XMonad.Layout.Named         -- custom layout names
@@ -38,7 +38,7 @@ main = do
         spawn "xrandr --auto"
         spawn "redshift"
         spawn "xmodmap -e \"keycode 135 = Super_L\""
-        xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig 
+        xmonad $ withUrgencyHook NoUrgencyHook $ ewmh defaultConfig 
             { modMask            = mod4Mask
             , terminal           = "urxvtcd"
             , borderWidth        = 2
