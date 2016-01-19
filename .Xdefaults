@@ -1,11 +1,3 @@
-URxvt.font:\
-    -*-unifont-medium-r-normal-*-16-*-*-*-*-*-iso10646-1,\
-    -*-terminus-medium-r-normal-*-16-*-*-*-*-*-iso10646-1
-
-URxvt.boldFont:\
-    -*-unifont-medium-r-normal-*-16-*-*-*-*-*-iso10646-1,\
-    -*-terminus-bold-r-normal-*-16-*-*-*-*-*-iso10646-1
-
 !urxvt*termName:         rxvt
 urxvt*background:       #0c0d0e
 urxvt*foreground:       #7f8f9f
@@ -28,7 +20,7 @@ URxvt*inheritPixmap:     False
 URxvt.perl-lib:            ~/.urxvt/ext/
 URxvt.perl-ext-common:     default,url-select
 URxvt.keysym.M-u:          perl:url-select:select_next
-URxvt.url-select.launcher: iceweasel
+URxvt.url-select.launcher: firefox
 URxvt.underlineURLs:       true!
 ! xscreensaver ---------------------------------------------------------------
 

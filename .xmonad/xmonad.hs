@@ -40,7 +40,7 @@ main = do
         spawn "xmodmap -e \"keycode 135 = Super_L\""
         xmonad $ withUrgencyHook NoUrgencyHook $ ewmh defaultConfig 
             { modMask            = mod4Mask
-            , terminal           = "urxvtcd"
+            , terminal           = "urxvt"
             , borderWidth        = 2
             , normalBorderColor  = "#dddddd"
             , focusedBorderColor = "#ff0000"
@@ -55,12 +55,12 @@ main = do
 
 myKeys = [ ((mod4Mask .|. shiftMask,  xK_l ), spawn "xscreensaver-command -lock")
          , ((0, xK_Print                   ), spawn "scrot")
-         , ((mod4Mask              , xK_F1 ), spawn "iceweasel")
+         , ((mod4Mask              , xK_F1 ), spawn "firefox")
          , ((mod4Mask              , xK_F2 ), spawn "google-chrome")
          , ((mod4Mask              , xK_F5 ), spawn "xrandr --output LVDS --mode 1280x768 --pos 0x0 --rotate normal --output CRT1 --mode 1440x900 --pos 1280x0 --rotate normal")
-         , ((mod4Mask              , xK_F10), spawn "amixer set Master toggle")
-         , ((mod4Mask .|. shiftMask, xK_a  ), spawn "amixer set Master 5%-")
-         , ((mod4Mask .|. shiftMask, xK_s  ), spawn "amixer set Master 5%+ unmute")
+         , ((mod4Mask              , xK_F10), spawn "amixer set PCM toggle")
+         , ((mod4Mask .|. shiftMask, xK_a  ), spawn "amixer set PCM 5%-")
+         , ((mod4Mask .|. shiftMask, xK_s  ), spawn "amixer set PCM 5%+ unmute")
          ] 
  
 -- Tags/Workspaces
@@ -88,7 +88,7 @@ myManageHook = composeAll
     , className =? "Vlc"            --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "XCalc"          --> doFloat
-    , className =? "Iceweasel"      --> doF (W.shift (myWorkspaces !! 1)) -- send to ws 2
+    , className =? "firefox"        --> doF (W.shift (myWorkspaces !! 1)) -- send to ws 2
     , className =? "Nautilus"       --> doF (W.shift (myWorkspaces !! 2)) -- send to ws 3
     , className =? "Gimp"           --> doF (W.shift (myWorkspaces !! 3)) -- send to ws 4
     , className =? "stalonetray"    --> doIgnore
