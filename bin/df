@@ -1,0 +1,8 @@
+/bin/df -h $@ | awk '
+function p(s, color) { printf("%c[0;%dm%s%c[0m\n", 27, color, s, 27); }
+BEGIN { black = 30; red = 31; green = 32; yellow = 33; blue = 34; purple = 35; cyan = 36 ; gray = 37 }
+$1 == "Filesystem" { print; next }
+$5 ~ /9[0-4]%/ { p($0, yellow); next }
+$5 ~ /9[5-9]%|1[0-9][0-9]%/ { p($0, red); next }
+{ print }
+'

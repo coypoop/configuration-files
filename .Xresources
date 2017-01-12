@@ -1,0 +1,64 @@
+urxvt.iso14755: False
+urxvt*font:             xft:Bitstream Vera Sans mono:pixelsize=16
+!urxvt*letterSpace:      -1
+urxvt*termName:         rxvt
+urxvt*scrollBar:        false
+urxvt.perl-lib:         ~/.urxvt/ext/
+urxvt.perl-ext-common:  default,-selection-popup,-option-popup,url-select
+urxvt.keysym.M-u:       perl:url-select:select_next
+urxvt.url-select.launcher: firefox
+urxvt.underlineURLs:    true!
+!urxvt*matcher.button:   1
+!urxvt*fading:           50
+!urxvt*fadeColor:        #000000
+
+Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full
+
+! PaperColour Theme
+
+urxvt.foreground: #4D4D4C
+urxvt.background: #EEEEEE
+
+! black
+urxvt.color0: #EDEDED
+urxvt.color8: #969694
+
+! red
+urxvt.color1: #D7005F
+urxvt.color9: #D7005F
+
+! green
+urxvt.color2: #718C00
+urxvt.color10: #718C00
+
+! yellow / orange
+urxvt.color3: #D75F00
+urxvt.color11: #D75F00
+
+! blue
+
+urxvt.color4: #4271AE
+urxvt.color12: #4271AE
+
+! magenta
+urxvt.color5: #8959A8
+urxvt.color13: #8959A8
+
+! cyan
+urxvt.color6: #3E999F
+urxvt.color14: #3E999F
+
+! white
+urxvt.color7: #4D4D4C
+urxvt.color15: #F5F5F5
+
+urxvt.transparent:   true
+urxvt.tintColor:     white
+urxvt.shading:       180
+
+xlogin*greetFont:xft:Bitstream Vera Sans Mono:pixelsize=12
+xlogin*font:xft:Bitstream Vera Sans Mono:pixelsize=12
+xlogin*promptFont:xft:Bitstream Vera Sans Mono:pixelsize=12
+xlogin*failFont:xft:Bitstream Vera Sans Mono:pixelsize=12

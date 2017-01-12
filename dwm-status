@@ -1,0 +1,104 @@
+#!/bin/sh
+
+sleep_time=60
+
+battery_symbol="🔋"
+clock_symbol="⏰"
+date_symbol="📅"
+mail_symbol="🖂"
+network_symbol="🖧"
+feeds_symbol="📰"
+temperature_symbol="🌡"
+#separator="▪"
+separator="|"
+
+mute_volume_symbol="🔇"
+low_volume_symbol="🔈"
+medium_volume_symbol=" 🔉"
+high_volume_symbol="🔊"
+
+what-day-is-it()
+{
+	printf "%s " $date_symbol
+	date '+%d/%m/%Y'
+}
+
+what-time-is-it()
+{
+	printf "%s " $clock_symbol
+	date '+%H:%M'
+}
+
+unread-mail()
+{
+	printf "%s " $mail_symbol
+	new | sed -nE '/total/ s/^ total +([0-9]+)\.$/\1/p'
+}
+
+unread-feeds()
+{
+	printf "%s " $feeds_symbol
+	MH=~/.mh_rss_profile new | sed -nE '/total/ s/^ total +([0-9]+)\.$/\1/p'
+}
+
+battery-status()
+{
+	printf "%s " $battery_symbol
+	{ envstat -s "acpibat0:charge" || echo "charge: (N/A)" ; } | sed -nE '/charge:/ s/^.*\(([^)]+)\)$/\1/p'
+}
+
+network-status()
+{
+	connected=""
+	wired_if="alc0"
+	wireless_if="urtwn0"
+
+	printf "${network_symbol}"
+	for i in $wired_if $wireless_if; do
+		if [ -n "`ifconfig -u $i 2>/dev/null`" ]; then
+			if [ ! "$connected" ]; then
+				connected="yes"
+			fi
+			printf " ${i}"
+		fi
+	done
+
+	if [ ! "$connected" ]; then
+		printf " -"
+	fi
+}
+
+cpu-temperature()
+{
+	printf "%s " $temperature_symbol
+	{ envstat -s "acpitz0:cpu0/cpu1/cpu2/cpu3 temperature" || echo "temperature: N/A" ; } | sed -nE '/temperature:/ s/^.*: *([0-9]+|N\/A) *.*$/\1/p'
+}
+
+volume()
+{
+	low_volume=0
+	medium_volume=80
+	high_volume=160
+
+	if [ `mixerctl -n outputs.master.mute` = "on" ]; then
+		echo "$mute_volume_symbol"
+		return
+	fi
+
+	volume=`mixerctl -n outputs.master | awk -F ',' '{ print ($1 + $2) / 2 }'`
+
+	if [ $volume -le $low_volume ]; then
+		echo "$low_volume_symbol"
+	elif [ $volume -le $medium_volume ]; then
+		echo "$medium_volume_symbol"
+	else
+		echo "$high_volume_symbol"
+	fi
+}
+
+
+while true; do
+	status="`network-status` $separator `volume` $separator `cpu-temperature` $separator `battery-status` $separator `unread-mail` $separator `unread-feeds` $separator `what-day-is-it` $separator `what-time-is-it`"
+	xsetroot -name "$status"
+	sleep $sleep_time
+done
