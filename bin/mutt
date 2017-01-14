@@ -1,1 +1,1 @@
-ssh -t coypu@sdf.org mutt
+ssh -t coypu@sdf.org 'tcsh -c mutt'
